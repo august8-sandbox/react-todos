@@ -7,7 +7,7 @@ export default class App extends React.Component {
     this.state = {
       todoList: [{
         todoId: 1,
-        todoDescription: 'Use React',
+        description: 'Use React',
       }],
       todoId: 0,
       initialValue: '',
@@ -22,7 +22,7 @@ export default class App extends React.Component {
       const newTodoList = this.state.todoList;
       newTodoList.push({
         todoId: nextTodoId,
-        todoDescription: event.target.value,
+        description: event.target.value,
       });
       this.setState({
         todoList: newTodoList,
@@ -41,7 +41,7 @@ export default class App extends React.Component {
 
   render() {
     const todoList = this.state.todoList.map((step, move) => {
-      const todo = <li key={move}>{step.todoDescription}</li>;
+      const todo = <li key={move}>{step.description}</li>;
       return todo;
     });
 
