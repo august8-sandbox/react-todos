@@ -5,6 +5,10 @@ export default class Header extends React.Component {
     this.props.onEventCallBack(event);
   }
 
+  valueChange(event) {
+    this.props.onValueChange(event);
+  }
+
   render() {
     return (
       <div>
@@ -12,6 +16,8 @@ export default class Header extends React.Component {
           type="text"
           placeholder={this.props.placeholder}
           onKeyPress={event => this.handleChange(event)}
+          onChange={event => this.valueChange(event)}
+          value={this.props.initialValue}
         />
       </div>
 
@@ -22,4 +28,6 @@ export default class Header extends React.Component {
 Header.propTypes = {
   placeholder: PropTypes.string,
   onEventCallBack: PropTypes.func,
+  onValueChange: PropTypes.func,
+  initialValue: PropTypes.string,
 };

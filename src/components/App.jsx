@@ -10,8 +10,10 @@ export default class App extends React.Component {
         todoDescription: 'Use React',
       }],
       todoId: 0,
+      initialValue: '',
     };
     this.addTodo = this.addTodo.bind(this);
+    this.changeInitialValue = this.changeInitialValue.bind(this);
   }
 
   addTodo(event) {
@@ -25,12 +27,20 @@ export default class App extends React.Component {
       this.setState({
         todoList: newTodoList,
         todoId: nextTodoId,
+        initialValue: '',
       });
     }
   }
 
+  changeInitialValue(event) {
+    const newInitialValue = event.target.value;
+    this.setState({
+      initialValue: newInitialValue,
+    });
+  }
+
   render() {
-    const moves = this.state.todoList.map((step, move) => {
+    const todoList = this.state.todoList.map((step, move) => {
       const todo = <li key={move}>{step.todoDescription}</li>;
       return todo;
     });
@@ -41,9 +51,11 @@ export default class App extends React.Component {
           placeholder="What needs to be done?"
           onEventCallBack={this.addTodo}
           addTodoValue={this.state.addTodoValue}
+          initialValue={this.state.initialValue}
+          onValueChange={this.changeInitialValue}
         />
         <div clssName="todo-list">
-          <ol>{moves}</ol>
+          <ol>{todoList}</ol>
         </div>
       </div>
     );
