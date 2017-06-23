@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import TodoList from './TodoList';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -8,12 +9,14 @@ export default class App extends React.Component {
       todoList: [{
         todoId: 1,
         description: 'Use React',
+        flag: true,
       }],
       todoId: 0,
       initialValue: '',
     };
     this.addTodo = this.addTodo.bind(this);
     this.changeInitialValue = this.changeInitialValue.bind(this);
+    this.changeCheckBox = this.changeCheckBox.bind(this);
   }
 
   addTodo(event) {
@@ -23,6 +26,7 @@ export default class App extends React.Component {
       newTodoList.push({
         todoId: nextTodoId,
         description: event.target.value,
+        flag: false,
       });
       this.setState({
         todoList: newTodoList,
@@ -39,24 +43,30 @@ export default class App extends React.Component {
     });
   }
 
-  render() {
-    const todoList = this.state.todoList.map((step, move) => {
-      const todo = <li key={move}>{step.description}</li>;
-      return todo;
+  changeCheckBox(event, index) {
+    const newTodoList = this.state.todoList;
+    // newTodoList[lpCnt].flag = newTodoList[lpCnt].flag ? false : true;
+    newTodoList[index].flag = newTodoList[index].flag === false;
+    this.setState({
+      todoList: newTodoList,
     });
+  }
 
+  render() {
     return (
       <div>
         <Header
+          title="Todos"
           placeholder="What needs to be done?"
           onEventCallBack={this.addTodo}
           addTodoValue={this.state.addTodoValue}
           initialValue={this.state.initialValue}
           onValueChange={this.changeInitialValue}
         />
-        <div clssName="todo-list">
-          <ol>{todoList}</ol>
-        </div>
+        <TodoList
+          todoList={this.state.todoList}
+          onChangeCheckBox={this.changeCheckBox}
+        />
       </div>
     );
   }

@@ -12,6 +12,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div>
+        <h1>{this.props.title}</h1>
         <input
           type="text"
           placeholder={this.props.placeholder}
@@ -27,7 +28,8 @@ export default class Header extends React.Component {
 
 Header.propTypes = {
   placeholder: PropTypes.string,
-  onEventCallBack: PropTypes.func,
-  onValueChange: PropTypes.func,
+  onEventCallBack: PropTypes.func.isRequired,
+  onValueChange: PropTypes.func.isRequired,
   initialValue: PropTypes.string,
+  title: PropTypes.string,
 };
