@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ListItem, IconButton, IconMenu, MenuItem } from 'material-ui';
 import { grey400 } from 'material-ui/styles/colors';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
