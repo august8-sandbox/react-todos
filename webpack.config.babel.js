@@ -8,7 +8,7 @@ export default {
     path.join(__dirname, 'src/main'),
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'docs'),
     filename: 'bundle.js',
   },
   module: {
