@@ -34,7 +34,7 @@ export default class TodoItem extends React.Component {
         key={this.props.indexNo}
         leftIcon={this.props.flag ? <CheckBoxIcon /> : <CheckBoxBlankIcon />}
         primaryText={this.props.primaryText}
-        onTouchTap={event => this.handleCheckBoxClick(event, this.props.indexNo)}
+        onTouchTap={event => this.handleCheckBoxClick(event, this.props.lpCnt)}
         rightIconButton={rightIconMenu}
       />
     );
@@ -42,6 +42,7 @@ export default class TodoItem extends React.Component {
 }
 
 TodoItem.propTypes = {
+  lpCnt: PropTypes.number,
   indexNo: PropTypes.number,
   primaryText: PropTypes.string,
   flag: PropTypes.bool,

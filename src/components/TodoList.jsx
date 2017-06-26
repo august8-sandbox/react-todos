@@ -7,6 +7,7 @@ export default class TodoList extends React.Component {
     const todoList = this.props.todoList.map((step, index) => {
       const todo = (
         <TodoItem
+          lpCnt={index}
           indexNo={step.todoId}
           primaryText={step.description}
           flag={step.flag}
