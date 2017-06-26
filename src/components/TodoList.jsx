@@ -1,20 +1,17 @@
 import React, { PropTypes } from 'react';
-import { List, ListItem } from 'material-ui/List';
-import CheckBoxIcon from 'material-ui/svg-icons/toggle/check-box';
-import CheckBoxBlankIcon from 'material-ui/svg-icons/toggle/check-box-outline-blank';
+import { List } from 'material-ui/List';
+import TodoItem from './TodoItem';
 
 export default class TodoList extends React.Component {
-  handleCheckBoxClick(event, index) {
-    this.props.onChangeCheckBox(event, index);
-  }
-
   render() {
     const todoList = this.props.todoList.map((step, index) => {
       const todo = (
-        <ListItem
+        <TodoItem
+          indexNo={step.todoId}
           primaryText={step.description}
-          leftIcon={step.flag ? <CheckBoxIcon /> : <CheckBoxBlankIcon />}
-          onClick={event => this.handleCheckBoxClick(event, index)}
+          flag={step.flag}
+          onChangeCheckBox={this.props.onChangeCheckBox}
+          onDeleteTodo={this.props.onDeleteTodo}
         />
       );
       return todo;
@@ -36,4 +33,5 @@ TodoList.propTypes = {
     }),
   ),
   onChangeCheckBox: PropTypes.func.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
 };

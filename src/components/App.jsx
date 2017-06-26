@@ -1,8 +1,10 @@
 import React from 'react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppBar from 'material-ui/AppBar';
 import Header from './Header';
 import TodoList from './TodoList';
 
+injectTapEventPlugin();
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,7 @@ export default class App extends React.Component {
       initialValue: '',
     };
     this.addTodo = this.addTodo.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
     this.changeInitialValue = this.changeInitialValue.bind(this);
     this.changeCheckBox = this.changeCheckBox.bind(this);
   }
@@ -37,6 +40,15 @@ export default class App extends React.Component {
     }
   }
 
+  deleteTodo(index) {
+    const newTodoList = this.state.todoList.filter(todoList =>
+      todoList.todoId !== index,
+    );
+    this.setState({
+      todoList: newTodoList,
+    });
+  }
+
   changeInitialValue(event) {
     const newInitialValue = event.target.value;
     this.setState({
@@ -46,7 +58,6 @@ export default class App extends React.Component {
 
   changeCheckBox(event, index) {
     const newTodoList = this.state.todoList;
-    // newTodoList[lpCnt].flag = newTodoList[lpCnt].flag ? false : true;
     newTodoList[index].flag = newTodoList[index].flag === false;
     this.setState({
       todoList: newTodoList,
@@ -61,7 +72,7 @@ export default class App extends React.Component {
           iconClassNameRight="muidocs-icon-navigation-expand-more"
         />
         <Header
-          placeholder="What needs to be done?"
+          placeholder="ええかんじに入力"
           onEventCallBack={this.addTodo}
           addTodoValue={this.state.addTodoValue}
           initialValue={this.state.initialValue}
@@ -70,6 +81,7 @@ export default class App extends React.Component {
         <TodoList
           todoList={this.state.todoList}
           onChangeCheckBox={this.changeCheckBox}
+          onDeleteTodo={this.deleteTodo}
         />
       </div>
     );

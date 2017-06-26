@@ -56,7 +56,7 @@ export default {
   devtool: 'source-map',
   devServer: {
     compress: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'docs'),
     historyApiFallback: true,
     hot: true,
   },
