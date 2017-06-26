@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import TextField from 'material-ui/TextField';
 
 export default class Header extends React.Component {
   handleChange(event) {
@@ -12,14 +13,13 @@ export default class Header extends React.Component {
   render() {
     return (
       <div>
-        <h1>{this.props.title}</h1>
-        <input
-          type="text"
-          placeholder={this.props.placeholder}
+        <TextField
+          floatingLabelText={this.props.placeholder}
           onKeyPress={event => this.handleChange(event)}
           onChange={event => this.valueChange(event)}
           value={this.props.initialValue}
-        />
+          fullWidth
+        /><br />
       </div>
 
     );
@@ -31,5 +31,4 @@ Header.propTypes = {
   onEventCallBack: PropTypes.func.isRequired,
   onValueChange: PropTypes.func.isRequired,
   initialValue: PropTypes.string,
-  title: PropTypes.string,
 };

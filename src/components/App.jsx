@@ -1,4 +1,5 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
 import Header from './Header';
 import TodoList from './TodoList';
 
@@ -55,8 +56,11 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        <AppBar
+          title="Todo List"
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+        />
         <Header
-          title="Todos"
           placeholder="What needs to be done?"
           onEventCallBack={this.addTodo}
           addTodoValue={this.state.addTodoValue}

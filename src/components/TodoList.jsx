@@ -1,4 +1,7 @@
 import React, { PropTypes } from 'react';
+import { List, ListItem } from 'material-ui/List';
+import CheckBoxIcon from 'material-ui/svg-icons/toggle/check-box';
+import CheckBoxBlankIcon from 'material-ui/svg-icons/toggle/check-box-outline-blank';
 
 export default class TodoList extends React.Component {
   handleCheckBoxClick(event, index) {
@@ -8,21 +11,18 @@ export default class TodoList extends React.Component {
   render() {
     const todoList = this.props.todoList.map((step, index) => {
       const todo = (
-        <li key={index}>
-          {step.description}
-          <input
-            type="checkbox"
-            checked={step.flag}
-            onClick={event => this.handleCheckBoxClick(event, index)}
-          />
-        </li>
+        <ListItem
+          primaryText={step.description}
+          leftIcon={step.flag ? <CheckBoxIcon /> : <CheckBoxBlankIcon />}
+          onClick={event => this.handleCheckBoxClick(event, index)}
+        />
       );
       return todo;
     });
     return (
-      <div className="todo-list">
-        <ol>{todoList}</ol>
-      </div>
+      <List>
+        {todoList}
+      </List>
     );
   }
 }
