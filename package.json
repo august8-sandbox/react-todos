@@ -9,6 +9,7 @@
     "start": "webpack-dev-server",
     "lint": "eslint  src/**/*.{js,jsx}",
     "lint:fix": "eslint  src/**/*.{js,jsx} -fix",
+    "flow": "flow",
     "build": "webpack -p"
   },
   "dependencies": {
@@ -20,8 +21,9 @@
   },
   "devDependencies": {
     "babel-core": "latest",
-    "babel-eslint": "^7.1.1",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^6.2.10",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-babili": "^0.0.9",
     "babel-preset-env": "^1.1.8",
     "babel-preset-es2015": "^6.18.0",
@@ -29,9 +31,11 @@
     "css-loader": "^0.26.1",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-flowtype": "^2.34.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.2.0",
+    "flow-bin": "^0.48.0",
     "html-loader": "^0.4.4",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
